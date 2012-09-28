@@ -1,0 +1,18 @@
+c:\users\leejonghyuk\documents\visual studio 2010\Projects\AniPang\AniPang\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\leejonghyuk\documents\visual studio 2010\Projects\AniPang\AniPang\obj\x86\Debug\AniPang.Properties.Resources.resources
+c:\users\leejonghyuk\documents\visual studio 2010\Projects\AniPang\AniPang\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\leejonghyuk\documents\visual studio 2010\Projects\AniPang\AniPang\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\leejonghyuk\documents\visual studio 2010\Projects\AniPang\AniPang\bin\Debug\AniPang.exe
+c:\users\leejonghyuk\documents\visual studio 2010\Projects\AniPang\AniPang\bin\Debug\AniPang.pdb
+c:\users\leejonghyuk\documents\visual studio 2010\Projects\AniPang\AniPang\obj\x86\Debug\AniPang.exe
+c:\users\leejonghyuk\documents\visual studio 2010\Projects\AniPang\AniPang\obj\x86\Debug\AniPang.pdb
+c:\users\leejonghyuk\documents\visual studio 2010\Projects\AniPang\AniPang\obj\x86\Debug\AniPang.Form1.resources
+C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\bin\Debug\AniPang.exe
+C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\bin\Debug\AniPang.pdb
+C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\obj\x86\Debug\AniPang.Form1.resources
+C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\obj\x86\Debug\AniPang.Properties.Resources.resources
+C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\obj\x86\Debug\AniPang.exe
+C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\obj\x86\Debug\AniPang.pdb

@@ -1,0 +1,9 @@
+C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\bin\Release\AniPang.exe
+C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\bin\Release\AniPang.pdb
+C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\obj\x86\Release\AniPang.Form1.resources
+C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\obj\x86\Release\AniPang.Properties.Resources.resources
+C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\obj\x86\Release\AniPang.exe
+C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\obj\x86\Release\AniPang.pdb
