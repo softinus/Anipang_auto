@@ -37,6 +37,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.txt_interval = new System.Windows.Forms.TextBox();
             this.PanelMain.SuspendLayout();
             this.panelRight.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +54,7 @@
             // 
             // panelCenter
             // 
-            this.panelCenter.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelCenter.BackColor = System.Drawing.Color.Black;
             this.panelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCenter.Location = new System.Drawing.Point(0, 0);
             this.panelCenter.Name = "panelCenter";
@@ -63,6 +64,7 @@
             // 
             // panelRight
             // 
+            this.panelRight.Controls.Add(this.txt_interval);
             this.panelRight.Controls.Add(this.button3);
             this.panelRight.Controls.Add(this.labelTime);
             this.panelRight.Controls.Add(this.button2);
@@ -73,6 +75,7 @@
             this.panelRight.Size = new System.Drawing.Size(85, 570);
             this.panelRight.TabIndex = 0;
             this.panelRight.Click += new System.EventHandler(this.button3_Click);
+            this.panelRight.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRight_Paint);
             // 
             // button3
             // 
@@ -81,7 +84,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 4;
-            this.button3.Text = "ReStart";
+            this.button3.Text = "ReStart(F3)";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
@@ -96,11 +99,11 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(5, 46);
+            this.button2.Location = new System.Drawing.Point(5, 68);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Start";
+            this.button2.Text = "Start(F2)";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -110,7 +113,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Load";
+            this.button1.Text = "Load(F1)";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -118,6 +121,15 @@
             // 
             this.timer1.Interval = 95;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // txt_interval
+            // 
+            this.txt_interval.Location = new System.Drawing.Point(6, 41);
+            this.txt_interval.Name = "txt_interval";
+            this.txt_interval.Size = new System.Drawing.Size(74, 21);
+            this.txt_interval.TabIndex = 5;
+            this.txt_interval.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_interval.TextChanged += new System.EventHandler(this.txt_interval_TextChanged);
             // 
             // Form1
             // 
@@ -129,6 +141,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
             this.Text = "AniPang - TestVersion";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.PanelMain.ResumeLayout(false);
             this.panelRight.ResumeLayout(false);
             this.panelRight.PerformLayout();
@@ -146,6 +159,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txt_interval;
     }
 }
 
