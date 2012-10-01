@@ -10,6 +10,7 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Hooks;
 
 namespace AniPang
 {
@@ -42,6 +43,66 @@ namespace AniPang
         {
             InitializeComponent();
         }
+
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.HookedKeyboardNofity += new KeyboardHooker.HookedKeyboardUserEventHandler(Form1_HookedKeyboardNofity);
+            KeyboardHooker.Hook(HookedKeyboardNofity);
+
+            txt_interval.Text= timer1.Interval.ToString();
+        }
+
+        event KeyboardHooker.HookedKeyboardUserEventHandler HookedKeyboardNofity;
+
+        private long Form1_HookedKeyboardNofity(bool bIsKeyDown, bool bAlt, bool bCtrl, bool bShift, bool bWindowKey, int vkCode)
+        {
+            long lResult = 0;
+
+          
+
+            //	입력을 막고 싶은 키가 있을 경우, 해당 키가 입력되었을 때
+            //	0이 아닌 값을 리턴하면 다른 프로세스가 해당 키보드 메시지를 받지 못하게 된다.
+            //	지금의 예처럼 코딩하면 Tab,Delete,Esc 키의 입력을 막게 된다.
+            if (
+                (vkCode == (int)System.Windows.Forms.Keys.Tab) ||
+                (vkCode == (int)System.Windows.Forms.Keys.Delete) ||
+                (vkCode == (int)System.Windows.Forms.Keys.Escape))
+            {
+                lResult = 1;
+            }
+
+            if (vkCode == (int)System.Windows.Forms.Keys.F1)
+            {
+                AniPangLoad();
+                //MessageBox.Show("F1");
+            }
+
+            if (vkCode == (int)System.Windows.Forms.Keys.F2)
+            {
+                //if (!m_bTimerStart)
+                {
+                    //MessageBox.Show("F2");
+                    timer1.Start();
+                    SetCursorPos(m_ptStartDot.X + 1, m_ptStartDot.Y + 1);
+                    m_bTimerStart = true;
+                }
+            }
+            if (vkCode == (int)System.Windows.Forms.Keys.F3)
+            {
+                //if (m_bTimerStart)
+                {
+                    //MessageBox.Show("F3");
+                    timer1.Stop();
+                    m_bTimerStart = false;
+                }
+            }
+
+            return lResult;
+        }
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -411,6 +472,7 @@ namespace AniPang
         }
         
         
+        //타이머 시작
         private void button2_Click(object sender, EventArgs e)
         {
             if (!m_bTimerStart)
@@ -437,33 +499,42 @@ namespace AniPang
             if (m_bStart)
             {
                 Graphics g = e.Graphics;
+                SolidBrush Brush1 = new SolidBrush(Color.FromArgb(253,244,239));
+                SolidBrush Brush2 = new SolidBrush(Color.FromArgb(178, 177, 175));
+                SolidBrush Brush3 = new SolidBrush(Color.FromArgb(255, 166, 163));
+                SolidBrush Brush4 = new SolidBrush(Color.FromArgb(28, 223, 227));
+                SolidBrush Brush5 = new SolidBrush(Color.FromArgb(166, 93, 61));
+                SolidBrush Brush6 = new SolidBrush(Color.FromArgb(152, 196, 41));
+                SolidBrush Brush7 = new SolidBrush(Color.FromArgb(255, 207, 79));
+                SolidBrush Brush8 = new SolidBrush(Color.FromArgb(222, 200, 200));
 
                 for (int i = 2; i < 9; i++)
                 {
                     for (int j = 2; j < 9; j++)
                     {
                         switch (m_pMainData[i, j])
-                        {
-                            case 1:
-                                g.FillRectangle(Brushes.Red, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
+                        {   
+                            //1토끼 2괭이 3때지 4곰탱 5원슝 6쥐색 7병알 -1뭐냐
+                            case 1://토끼
+                                g.FillRectangle(Brush1, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
                                 break;
-                            case 2:
-                                g.FillRectangle(Brushes.Orange, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
+                            case 2://고양이
+                                g.FillRectangle(Brush2, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
                                 break;
-                            case 3:
-                                g.FillRectangle(Brushes.Yellow, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
+                            case 3://돼지
+                                g.FillRectangle(Brush3, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
                                 break;
-                            case 4:
-                                g.FillRectangle(Brushes.Green, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
+                            case 4://곰
+                                g.FillRectangle(Brush4, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
                                 break;
-                            case 5:
-                                g.FillRectangle(Brushes.Blue, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
+                            case 5://원숭
+                                g.FillRectangle(Brush5, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
                                 break;
-                            case 6:
-                                g.FillRectangle(Brushes.Black, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
+                            case 6://쥐
+                                g.FillRectangle(Brush6, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
                                 break;
-                            case 7:
-                                g.FillRectangle(Brushes.Purple, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
+                            case 7://병아리
+                                g.FillRectangle(Brush7, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
                                 break;
                             case -1:
                                 g.FillRectangle(Brushes.DarkRed, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
@@ -494,6 +565,17 @@ namespace AniPang
         {
 
         }
+
+        private void panelRight_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txt_interval_TextChanged(object sender, EventArgs e)
+        {
+            timer1.Interval = Convert.ToInt32(txt_interval.Text);
+        }
+
     }
 
     [StructLayout(LayoutKind.Sequential)]
