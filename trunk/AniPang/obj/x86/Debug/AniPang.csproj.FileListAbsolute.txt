@@ -16,3 +16,12 @@ C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\obj\x86\Debug\GenerateResource.read
 C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\obj\x86\Debug\AniPang.exe
 C:\Users\LeeJongHyuk\Desktop\AniPang\AniPang\obj\x86\Debug\AniPang.pdb
+D:\DAOU_work\ani\trunk\AniPang\obj\x86\Debug\AniPang.exe
+D:\DAOU_work\ani\trunk\AniPang\obj\x86\Debug\AniPang.pdb
+D:\DAOU_work\ani\trunk\AniPang\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\DAOU_work\ani\trunk\AniPang\obj\x86\Debug\AniPang.Form1.resources
+D:\DAOU_work\ani\trunk\AniPang\obj\x86\Debug\AniPang.Properties.Resources.resources
+D:\DAOU_work\ani\trunk\AniPang\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\DAOU_work\ani\trunk\AniPang\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\DAOU_work\ani\trunk\AniPang\bin\Debug\AniPang.exe
+D:\DAOU_work\ani\trunk\AniPang\bin\Debug\AniPang.pdb

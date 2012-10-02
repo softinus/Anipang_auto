@@ -65,13 +65,13 @@ namespace AniPang
             //	입력을 막고 싶은 키가 있을 경우, 해당 키가 입력되었을 때
             //	0이 아닌 값을 리턴하면 다른 프로세스가 해당 키보드 메시지를 받지 못하게 된다.
             //	지금의 예처럼 코딩하면 Tab,Delete,Esc 키의 입력을 막게 된다.
-            if (
-                (vkCode == (int)System.Windows.Forms.Keys.Tab) ||
-                (vkCode == (int)System.Windows.Forms.Keys.Delete) ||
-                (vkCode == (int)System.Windows.Forms.Keys.Escape))
-            {
-                lResult = 1;
-            }
+            //if (
+            //    (vkCode == (int)System.Windows.Forms.Keys.Tab) ||
+            //    (vkCode == (int)System.Windows.Forms.Keys.Delete) ||
+            //    (vkCode == (int)System.Windows.Forms.Keys.Escape))
+            //{
+            //    lResult = 1;
+            //}
 
             if (vkCode == (int)System.Windows.Forms.Keys.F1)
             {
@@ -117,7 +117,8 @@ namespace AniPang
         Point m_ptStartDot = new Point(0, 0);
         Point m_ptLocation = new Point(17, 165);
 
-        int[,] m_pMainData = null;
+        Bitmap bmp;
+        Animals[,] m_pMainData = null;
         bool m_bStart = false;
         int[] m_pLimit = new int[4];
 
@@ -176,22 +177,23 @@ namespace AniPang
             bt.Save(ms, ImageFormat.Jpeg);
 
             Image img = Image.FromStream(ms);
-            Bitmap bmp = new Bitmap(img);
+            bmp = new Bitmap(img);
             ResultData(bmp, ref m_pMainData);
             bmp.Save("Test" + m_iTimeStop + ".bmp", ImageFormat.Bmp);
             m_bStart = true;
             this.panelCenter.Invalidate();
         }
 
-        private void ResultData(Bitmap bmp, ref int[,] pMainData)
+        private void ResultData(Bitmap bmp, ref Animals[,] pMainData)
         {
-            pMainData = new int[11, 11];//1토끼 2괭이 3때지 4곰탱 5원슝 6쥐색 7병알 -1뭐냐
+            pMainData = new Animals[11, 11];
+            //0빈자리 1토끼 2고양이 3돼지 4곰돌이 5원숭이 6쥐 7병아리 8폭탄-1뭐냐
 
             for (int i = 0; i < 11; i++)
             {
                 for (int j = 0; j < 11; j++)
                 {
-                    pMainData[i, j] = -444;
+                    pMainData[i, j] = Animals.ERROR;
                 }
             }
 
@@ -199,39 +201,43 @@ namespace AniPang
             {
                 for (int j = 2; j < 9; j++)
                 {
-                    Color crPixel = bmp.GetPixel(m_ptLocation.X + ((i - 2) * 50), m_ptLocation.Y + ((j - 2) * 50));
+                    Color crPixel = GetRGBinPoint(i, j);
 
                     if (((crPixel.R <= 255) && (crPixel.R >= 210)) && ((crPixel.G <= 255) && (crPixel.G >= 210)) && ((crPixel.B <= 255) && (crPixel.B >= 210)))
                     {
-                        pMainData[j, i] = 1;//토끼완료
+                        pMainData[j, i] = Animals.TOKKI;//토끼완료
                     }
                     else if (((crPixel.R <= 190) && (crPixel.R >= 150)) && ((crPixel.G <= 190) && (crPixel.G >= 160)) && ((crPixel.B <= 190) && (crPixel.B >= 150)))
                     {
-                        pMainData[j, i] = 2;//고양이완료
+                        pMainData[j, i] = Animals.CAT;//고양이완료
                     }
                     else if (((crPixel.R <= 255) && (crPixel.R >= 230)) && ((crPixel.G <= 180) && (crPixel.G >= 150)) && ((crPixel.B <= 180) && (crPixel.B >= 150)))
                     {
-                        pMainData[j, i] = 3; //돼지완료
+                        pMainData[j, i] = Animals.PIG; //돼지완료
                     }
                     else if (((crPixel.R <= 80) && (crPixel.R >= 0)) && ((crPixel.G <= 250) && (crPixel.G >= 190)) && ((crPixel.B <= 250) && (crPixel.B >= 190)))
                     {
-                        pMainData[j, i] = 4; //곰완료
+                        pMainData[j, i] = Animals.BEAR; //곰완료
                     }
-                    else if (((crPixel.R <= 255) && (crPixel.R >= 230)) && ((crPixel.G <= 230) && (crPixel.G >= 190)) && ((crPixel.B <= 90) && (crPixel.B >= 65)))
+                    else if (((crPixel.R <= 255) && (crPixel.R >= 230)) && ((crPixel.G <= 215) && (crPixel.G >= 95)) && ((crPixel.B <= 90) && (crPixel.B >= 25)))
                     {
-                        pMainData[j, i] = 7; //병아리 했고,
+                        pMainData[j, i] = Animals.CHICK; //병아리 했고,
                     }
-                    else if (((crPixel.R <= 255) && (crPixel.R >= 220)) && ((crPixel.G <= 230) && (crPixel.G >= 180)) && ((crPixel.B <= 180) && (crPixel.B >= 140)))
+                    else if (((crPixel.R <= 255) && (crPixel.R >= 173)) && ((crPixel.G <= 220) && (crPixel.G >= 173)) && ((crPixel.B <= 180) && (crPixel.B >= 140)))
                     {
-                        pMainData[j, i] = 5; //원숭이
+                        pMainData[j, i] = Animals.MONKEY; //원숭이
                     }
-                    else if (((crPixel.R <= 230) && (crPixel.R >= 130)) && ((crPixel.G <= 250) && (crPixel.G >= 140)) && ((crPixel.B <= 150) && (crPixel.B >= 20)))
+                    else if (((crPixel.R <= 255) && (crPixel.R >= 70)) && ((crPixel.G <= 250) && (crPixel.G >= 120)) && ((crPixel.B <= 171) && (crPixel.B >= 20)))
                     {
-                        pMainData[j, i] = 6; //쥐
+                        pMainData[j, i] = Animals.MOUSE; //쥐
                     }
                     else if (((crPixel.R <= 80) && (crPixel.R >= 0)) && ((crPixel.G <= 80) && (crPixel.G >= 0)) && ((crPixel.B <= 80) && (crPixel.B >= 0)))
                     {
-                        pMainData[j, i] = -1;
+                        pMainData[j, i] = Animals.NONE;
+                    }
+                    else
+                    {
+                        pMainData[j, i] = Animals.ERROR;
                     }
                 }
             }
@@ -257,7 +263,7 @@ namespace AniPang
             {
                 for (int j = 2; j < 9; j++)
                 {
-                    int iCurrentAni = m_pMainData[i, j];
+                    Animals iCurrentAni = m_pMainData[i, j];
 
                     Point[] pIndex = new Point[8];
                     Point ptCenter = new Point();
@@ -287,15 +293,15 @@ namespace AniPang
                             switch (iIndex)
                             {
                                 case 0:
-                                    if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] != -444) && (m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] == m_pMainData[ptCenter.X, ptCenter.Y]))
+                                    if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] != Animals.ERROR) && (m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                     {
-                                        if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y - 1] != -444) 
+                                        if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y - 1] != Animals.ERROR) 
                                             && (m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y - 1] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X, ptCenter.Y, ptCenter.X - 1, ptCenter.Y);
                                             return true;
                                         }
-                                        else if ((m_pMainData[pIndex[iIndex].X + 1, pIndex[iIndex].Y - 1] != -444) 
+                                        else if ((m_pMainData[pIndex[iIndex].X + 1, pIndex[iIndex].Y - 1] != Animals.ERROR) 
                                             && (m_pMainData[pIndex[iIndex].X + 1, pIndex[iIndex].Y - 1] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X - 1, ptCenter.Y - 1, ptCenter.X, ptCenter.Y - 1);
@@ -304,22 +310,22 @@ namespace AniPang
                                     }
                                     break;
                                 case 1:
-                                    if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] != -444)
+                                    if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] != Animals.ERROR)
                                         && (m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                     {
-                                        if ((m_pMainData[pIndex[iIndex].X - 1, pIndex[iIndex].Y - 1] != -444)
+                                        if ((m_pMainData[pIndex[iIndex].X - 1, pIndex[iIndex].Y - 1] != Animals.ERROR)
                                             && (m_pMainData[pIndex[iIndex].X - 1, pIndex[iIndex].Y - 1] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X - 1, ptCenter.Y - 2, ptCenter.X, ptCenter.Y - 2);
                                             return true;
                                         }
-                                        else if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y - 2] != -444)
+                                        else if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y - 2] != Animals.ERROR)
                                             && (m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y - 2] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X, ptCenter.Y - 3, ptCenter.X, ptCenter.Y - 2);
                                             return true;
                                         }
-                                        else if ((m_pMainData[pIndex[iIndex].X + 1, pIndex[iIndex].Y - 1] != -444)
+                                        else if ((m_pMainData[pIndex[iIndex].X + 1, pIndex[iIndex].Y - 1] != Animals.ERROR)
                                             && (m_pMainData[pIndex[iIndex].X + 1, pIndex[iIndex].Y - 1] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X  + 1, ptCenter.Y - 2, ptCenter.X, ptCenter.Y - 2);
@@ -328,16 +334,16 @@ namespace AniPang
                                     }
                                     break;
                                 case 2:
-                                    if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] != -444)
+                                    if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] != Animals.ERROR)
                                         && (m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                     {
-                                        if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y - 1] != -444)
+                                        if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y - 1] != Animals.ERROR)
                                             && (m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y - 1] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X, ptCenter.Y, ptCenter.X + 1, ptCenter.Y);
                                             return true;
                                         }
-                                        else if ((m_pMainData[pIndex[iIndex].X - 1, pIndex[iIndex].Y - 1] != -444)
+                                        else if ((m_pMainData[pIndex[iIndex].X - 1, pIndex[iIndex].Y - 1] != Animals.ERROR)
                                             && (m_pMainData[pIndex[iIndex].X - 1, pIndex[iIndex].Y - 1] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X + 1, ptCenter.Y - 1, ptCenter.X, ptCenter.Y - 1);
@@ -346,22 +352,22 @@ namespace AniPang
                                     }
                                     break;
                                 case 3:
-                                    if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] != -444)
+                                    if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] != Animals.ERROR)
                                         && (m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                     {
-                                        if ((m_pMainData[pIndex[iIndex].X - 1, pIndex[iIndex].Y - 1] != -444)
+                                        if ((m_pMainData[pIndex[iIndex].X - 1, pIndex[iIndex].Y - 1] != Animals.ERROR)
                                             && (m_pMainData[pIndex[iIndex].X - 1, pIndex[iIndex].Y - 1] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X - 2, ptCenter.Y - 1, ptCenter.X - 2, ptCenter.Y);
                                             return true;
                                         }
-                                        else if ((m_pMainData[pIndex[iIndex].X - 2, pIndex[iIndex].Y] != -444)
+                                        else if ((m_pMainData[pIndex[iIndex].X - 2, pIndex[iIndex].Y] != Animals.ERROR)
                                             && (m_pMainData[pIndex[iIndex].X - 2, pIndex[iIndex].Y] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X - 3, ptCenter.Y, ptCenter.X - 2, ptCenter.Y);
                                             return true;
                                         }
-                                        else if ((m_pMainData[pIndex[iIndex].X - 1, pIndex[iIndex].Y + 1] != -444)
+                                        else if ((m_pMainData[pIndex[iIndex].X - 1, pIndex[iIndex].Y + 1] != Animals.ERROR)
                                             && (m_pMainData[pIndex[iIndex].X - 1, pIndex[iIndex].Y + 1] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X - 2, ptCenter.Y + 1, ptCenter.X - 2, ptCenter.Y);
@@ -370,22 +376,22 @@ namespace AniPang
                                     }
                                     break;
                                 case 4:
-                                    if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] != -444)
+                                    if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] != Animals.ERROR)
                                         && (m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                     {
-                                        if ((m_pMainData[pIndex[iIndex].X + 1, pIndex[iIndex].Y - 1] != -444)
+                                        if ((m_pMainData[pIndex[iIndex].X + 1, pIndex[iIndex].Y - 1] != Animals.ERROR)
                                             && (m_pMainData[pIndex[iIndex].X + 1, pIndex[iIndex].Y - 1] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X + 2, ptCenter.Y - 1, ptCenter.X + 2, ptCenter.Y);
                                             return true;
                                         }
-                                        else if ((m_pMainData[pIndex[iIndex].X + 2, pIndex[iIndex].Y] != -444)
+                                        else if ((m_pMainData[pIndex[iIndex].X + 2, pIndex[iIndex].Y] != Animals.ERROR)
                                              && (m_pMainData[pIndex[iIndex].X + 2, pIndex[iIndex].Y] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X + 3, ptCenter.Y, ptCenter.X + 2, ptCenter.Y);
                                             return true;
                                         }
-                                        else if ((m_pMainData[pIndex[iIndex].X + 1, pIndex[iIndex].Y + 1] != -444)
+                                        else if ((m_pMainData[pIndex[iIndex].X + 1, pIndex[iIndex].Y + 1] != Animals.ERROR)
                                              && (m_pMainData[pIndex[iIndex].X + 1, pIndex[iIndex].Y + 1] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X + 2, ptCenter.Y + 1, ptCenter.X + 2, ptCenter.Y);
@@ -394,16 +400,16 @@ namespace AniPang
                                     }
                                     break;
                                 case 5:
-                                    if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] != -444)
+                                    if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] != Animals.ERROR)
                                          && (m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                     {
-                                        if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y + 1] != -444)
+                                        if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y + 1] != Animals.ERROR)
                                              && (m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y + 1] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X, ptCenter.Y, ptCenter.X - 1, ptCenter.Y);
                                             return true;
                                         }
-                                        else if ((m_pMainData[pIndex[iIndex].X + 1, pIndex[iIndex].Y + 1] != -444)
+                                        else if ((m_pMainData[pIndex[iIndex].X + 1, pIndex[iIndex].Y + 1] != Animals.ERROR)
                                              && (m_pMainData[pIndex[iIndex].X + 1, pIndex[iIndex].Y + 1] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X - 1, ptCenter.Y + 1, ptCenter.X, ptCenter.Y + 1);
@@ -412,22 +418,22 @@ namespace AniPang
                                     }
                                     break;
                                 case 6:
-                                    if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] != -444)
+                                    if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] != Animals.ERROR)
                                          && (m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                     {
-                                        if ((m_pMainData[pIndex[iIndex].X - 1, pIndex[iIndex].Y + 1] != -444)
+                                        if ((m_pMainData[pIndex[iIndex].X - 1, pIndex[iIndex].Y + 1] != Animals.ERROR)
                                              && (m_pMainData[pIndex[iIndex].X - 1, pIndex[iIndex].Y + 1] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X - 1, ptCenter.Y + 2, ptCenter.X, ptCenter.Y + 2);
                                             return true;
                                         }
-                                        else if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y + 2] != -444)
+                                        else if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y + 2] != Animals.ERROR)
                                              && (m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y + 2] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X, ptCenter.Y + 3, ptCenter.X, ptCenter.Y + 2);
                                             return true;
                                         }
-                                        else if ((m_pMainData[pIndex[iIndex].X + 1, pIndex[iIndex].Y + 1] != -444)
+                                        else if ((m_pMainData[pIndex[iIndex].X + 1, pIndex[iIndex].Y + 1] != Animals.ERROR)
                                              && (m_pMainData[pIndex[iIndex].X + 1, pIndex[iIndex].Y + 1] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X + 1, ptCenter.Y + 2, ptCenter.X, ptCenter.Y + 2);
@@ -436,16 +442,16 @@ namespace AniPang
                                     }
                                     break;
                                 case 7:
-                                    if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] != -444)
+                                    if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] != Animals.ERROR)
                                          && (m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                     {
-                                        if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y + 1] != -444)
+                                        if ((m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y + 1] != Animals.ERROR)
                                              && (m_pMainData[pIndex[iIndex].X, pIndex[iIndex].Y + 1] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         {
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X, ptCenter.Y, ptCenter.X + 1, ptCenter.Y);
                                             return true;
                                         }
-                                        else if ((m_pMainData[pIndex[iIndex].X - 1, pIndex[iIndex].Y + 1] != -444)
+                                        else if ((m_pMainData[pIndex[iIndex].X - 1, pIndex[iIndex].Y + 1] != Animals.ERROR)
                                             && (m_pMainData[pIndex[iIndex].X - 1, pIndex[iIndex].Y + 1] == m_pMainData[ptCenter.X, ptCenter.Y]))
                                         { 
                                             PointSetting(ref ptStart, ref ptEnd, ptCenter.X + 1, ptCenter.Y + 1, ptCenter.X, ptCenter.Y + 1);
@@ -457,12 +463,12 @@ namespace AniPang
                         }
                     }
 
-                    if (iCurrentAni == -1) //폭탄
+                    if (iCurrentAni == Animals.BOMB) //폭탄
                     {
                         ptStart = new Point(i, j);
                         ptEnd = new Point(i, j);
 
-                        PointSetting(ref ptStart, ref ptEnd, ptStart.X, ptStart.Y, ptEnd.X, ptEnd.Y); 
+                        PointSetting(ref ptStart, ref ptEnd, ptStart.X, ptStart.Y, ptEnd.X, ptEnd.Y);
                         return true;
                     }
                 }
@@ -508,42 +514,68 @@ namespace AniPang
                 SolidBrush Brush7 = new SolidBrush(Color.FromArgb(255, 207, 79));
                 SolidBrush Brush8 = new SolidBrush(Color.FromArgb(222, 200, 200));
 
+                Font font = new Font("나눔고딕코딩", 8);
+                SolidBrush Brush_font = new SolidBrush(Color.FromArgb(255, 0, 255));
+                              
+
                 for (int i = 2; i < 9; i++)
                 {
                     for (int j = 2; j < 9; j++)
                     {
+                        Color crPixel = GetRGBinPoint(i, j);
+                        String strColor = "R: " + crPixel.R.ToString() + "\nG: " + crPixel.G.ToString() + "\nB: " + crPixel.B.ToString();
+
                         switch (m_pMainData[i, j])
                         {   
-                            //1토끼 2괭이 3때지 4곰탱 5원슝 6쥐색 7병알 -1뭐냐
-                            case 1://토끼
+                            //1토끼 2괭이 3때지 4곰탱 5원슝 6쥐색 7병알 -1뭐냐 0폭탄
+                            case Animals.TOKKI://토끼
                                 g.FillRectangle(Brush1, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
+                                g.DrawString(strColor, font, Brush_font, 50 + (j * 50), 50 + (i * 50) + 15);
                                 break;
-                            case 2://고양이
+                            case Animals.CAT://고양이
                                 g.FillRectangle(Brush2, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
+                                g.DrawString(strColor, font, Brush_font, 50 + (j * 50), 50 + (i * 50) + 15);
                                 break;
-                            case 3://돼지
+                            case Animals.PIG://돼지
                                 g.FillRectangle(Brush3, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
+                                g.DrawString(strColor, font, Brush_font, 50 + (j * 50), 50 + (i * 50) + 15);
                                 break;
-                            case 4://곰
+                            case Animals.BEAR://곰
                                 g.FillRectangle(Brush4, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
+                                g.DrawString(strColor, font, Brush_font, 50 + (j * 50), 50 + (i * 50) + 15);
                                 break;
-                            case 5://원숭
+                            case Animals.MONKEY://원숭
                                 g.FillRectangle(Brush5, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
+                                g.DrawString(strColor, font, Brush_font, 50 + (j * 50), 50 + (i * 50) + 15);
                                 break;
-                            case 6://쥐
+                            case Animals.MOUSE://쥐
                                 g.FillRectangle(Brush6, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
+                                g.DrawString(strColor, font, Brush_font, 50 + (j * 50), 50 + (i * 50) + 15);
                                 break;
-                            case 7://병아리
+                            case Animals.CHICK://병아리
                                 g.FillRectangle(Brush7, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
+                                g.DrawString(strColor, font, Brush_font, 50 + (j * 50), 50 + (i * 50) + 15);
                                 break;
-                            case -1:
+                            case Animals.NONE:
                                 g.FillRectangle(Brushes.DarkRed, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
+                                g.DrawString(strColor, font, Brush_font, 50 + (j * 50) + 5, 50 + (i * 50) + 15);
                                 break;
-
+                            case Animals.ERROR:
+                                g.FillRectangle(Brushes.Black, new Rectangle(50 + (j * 50), 50 + (i * 50), 50, 50));
+                                g.DrawLine(Pens.Red, new Point(50+(j*50),50+ i*50), new Point(100+(j*50),100+(i*50)) );
+                                g.DrawString(strColor, font, Brush_font, 50 + (j * 50) + 5, 50 + (i * 50) + 15);
+                                break;
                         }
                     }
                 }
             }
+        }
+
+        // CJH
+        private Color GetRGBinPoint(int i, int j)
+        {
+            Color crPixel = bmp.GetPixel(m_ptLocation.X + ((i - 2) * 50), m_ptLocation.Y + ((j - 2) * 50));
+            return crPixel;
         }
 
         private void PointSetting(ref Point ptStart, ref Point ptEnd, int iSX, int iSY, int iEX, int EY)
