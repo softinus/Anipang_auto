@@ -32,12 +32,13 @@
             this.PanelMain = new System.Windows.Forms.Panel();
             this.panelCenter = new System.Windows.Forms.Panel();
             this.panelRight = new System.Windows.Forms.Panel();
+            this.txt_interval = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.labelTime = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.txt_interval = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.PanelMain.SuspendLayout();
             this.panelRight.SuspendLayout();
             this.SuspendLayout();
@@ -64,6 +65,7 @@
             // 
             // panelRight
             // 
+            this.panelRight.Controls.Add(this.label1);
             this.panelRight.Controls.Add(this.txt_interval);
             this.panelRight.Controls.Add(this.button3);
             this.panelRight.Controls.Add(this.labelTime);
@@ -77,14 +79,23 @@
             this.panelRight.Click += new System.EventHandler(this.button3_Click);
             this.panelRight.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRight_Paint);
             // 
+            // txt_interval
+            // 
+            this.txt_interval.Location = new System.Drawing.Point(45, 41);
+            this.txt_interval.Name = "txt_interval";
+            this.txt_interval.Size = new System.Drawing.Size(35, 21);
+            this.txt_interval.TabIndex = 5;
+            this.txt_interval.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_interval.TextChanged += new System.EventHandler(this.txt_interval_TextChanged);
+            // 
             // button3
             // 
             this.button3.Enabled = false;
             this.button3.Location = new System.Drawing.Point(5, 106);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(75, 36);
             this.button3.TabIndex = 4;
-            this.button3.Text = "ReStart(F3)";
+            this.button3.Text = "Stop(F3)\r\nRestart";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
@@ -122,14 +133,14 @@
             this.timer1.Interval = 95;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // txt_interval
+            // label1
             // 
-            this.txt_interval.Location = new System.Drawing.Point(6, 41);
-            this.txt_interval.Name = "txt_interval";
-            this.txt_interval.Size = new System.Drawing.Size(74, 21);
-            this.txt_interval.TabIndex = 5;
-            this.txt_interval.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt_interval.TextChanged += new System.EventHandler(this.txt_interval_TextChanged);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 45);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 12);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "timer";
             // 
             // Form1
             // 
@@ -160,6 +171,7 @@
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox txt_interval;
+        private System.Windows.Forms.Label label1;
     }
 }
 
