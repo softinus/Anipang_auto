@@ -18,3 +18,13 @@ D:\DAOU_work\ani\trunk\AniPang\obj\x86\Release\GenerateResource.write.1.tlog
 D:\DAOU_work\ani\trunk\AniPang\obj\x86\Release\AniPang.AllGame.resources
 D:\DAOU_work\ani\trunk\AniPang\obj\x86\Release\AniPang.Anipang.resources
 D:\DAOU_work\ani\trunk\AniPang\obj\x86\Release\AniPang.frmMain.resources
+H:\0.MyProject\ani\trunk\AniPang\obj\x86\Release\AniPang.exe
+H:\0.MyProject\ani\trunk\AniPang\obj\x86\Release\AniPang.pdb
+H:\0.MyProject\ani\trunk\AniPang\bin\Release\AniPang.exe
+H:\0.MyProject\ani\trunk\AniPang\bin\Release\AniPang.pdb
+H:\0.MyProject\ani\trunk\AniPang\obj\x86\Release\AniPang.frmAllGame.resources
+H:\0.MyProject\ani\trunk\AniPang\obj\x86\Release\AniPang.frmAnipang.resources
+H:\0.MyProject\ani\trunk\AniPang\obj\x86\Release\AniPang.frmMain.resources
+H:\0.MyProject\ani\trunk\AniPang\obj\x86\Release\AniPang.frmKutar1.resources
+H:\0.MyProject\ani\trunk\AniPang\obj\x86\Release\AniPang.Properties.Resources.resources
+H:\0.MyProject\ani\trunk\AniPang\obj\x86\Release\AniPang.csproj.GenerateResource.Cache

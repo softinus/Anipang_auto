@@ -27,3 +27,13 @@ D:\DAOU_work\ani\trunk\AniPang\bin\Debug\AniPang.pdb
 D:\DAOU_work\ani\trunk\AniPang\obj\x86\Debug\AniPang.AllGame.resources
 D:\DAOU_work\ani\trunk\AniPang\obj\x86\Debug\AniPang.Anipang.resources
 D:\DAOU_work\ani\trunk\AniPang\obj\x86\Debug\AniPang.frmMain.resources
+H:\0.MyProject\ani\trunk\AniPang\bin\Debug\AniPang.exe
+H:\0.MyProject\ani\trunk\AniPang\bin\Debug\AniPang.pdb
+H:\0.MyProject\ani\trunk\AniPang\obj\x86\Debug\AniPang.frmMain.resources
+H:\0.MyProject\ani\trunk\AniPang\obj\x86\Debug\AniPang.Properties.Resources.resources
+H:\0.MyProject\ani\trunk\AniPang\obj\x86\Debug\AniPang.csproj.GenerateResource.Cache
+H:\0.MyProject\ani\trunk\AniPang\obj\x86\Debug\AniPang.exe
+H:\0.MyProject\ani\trunk\AniPang\obj\x86\Debug\AniPang.pdb
+H:\0.MyProject\ani\trunk\AniPang\obj\x86\Debug\AniPang.frmKutar1.resources
+H:\0.MyProject\ani\trunk\AniPang\obj\x86\Debug\AniPang.frmAllGame.resources
+H:\0.MyProject\ani\trunk\AniPang\obj\x86\Debug\AniPang.frmAnipang.resources
