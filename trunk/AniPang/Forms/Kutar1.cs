@@ -50,7 +50,7 @@ namespace AniPang
         RECT m_rcSize = new RECT();
 
         Point m_ptStartDot = new Point(0, 0);
-        Point m_ptLocation = new Point(17, 165);
+        //Point m_ptLocation = new Point(17, 165);
 
         Bitmap bmp;
         KutarStat m_pMainData;  // 쿠타 상태
@@ -122,6 +122,8 @@ namespace AniPang
             GetWindowRect(m_hWndCanvas, ref m_rcLocation); // Top, Left
             GetClientRect(m_hWndCanvas, ref m_rcSize); // Bottom, Right
 
+            timer1.Interval = Int32.Parse(txt_interval.Text);
+
             //m_ptStartDot = new Point((m_rcLocation.left + 356 - 20), (m_rcLocation.top + 45 - 38));
             m_ptStartDot = new Point((m_rcLocation.left), (m_rcLocation.top));
         }
@@ -130,15 +132,17 @@ namespace AniPang
         private void GetScreen()
         {
             // blue stack 해상도가 w:400, h:320 일 때 기준. [4/23/2014 Mark]
-            Size sz = new Size(400, 320);
-            Bitmap bt = new Bitmap(400, 320);
+            //Size sz = new Size(400, 320);
+            //Bitmap bt = new Bitmap(400, 320);
+            Size sz = new Size(60, 30);
+            Bitmap bt = new Bitmap(60, 30);
 
             //m_pLimit[0] = m_ptStartDot.Y; m_pLimit[1] = (m_ptStartDot.Y + 600);
             //m_pLimit[2] = m_ptStartDot.X; m_pLimit[3] = (m_ptStartDot.X + 350);
 
             Graphics g = Graphics.FromImage(bt);
 
-            g.CopyFromScreen(m_ptStartDot.X, m_ptStartDot.Y, 0, 0, sz);
+            g.CopyFromScreen(m_ptStartDot.X+240, m_ptStartDot.Y+200, 0, 0, sz);
 
             MemoryStream ms = new MemoryStream();
             ms.Position = 0;
@@ -149,8 +153,8 @@ namespace AniPang
             Image img = Image.FromStream(ms);
             bmp = new Bitmap(img);
             ResultData(bmp, ref m_pMainData);
-            //bmp.Save("Test" + m_iTimeNumbering + ".bmp", ImageFormat.Bmp);
-            bmp.Save("Test" + "000" + ".bmp", ImageFormat.Bmp);
+            bmp.Save("Test" + m_iTimeNumbering + ".bmp", ImageFormat.Bmp);
+            //bmp.Save("Test" + "000" + ".bmp", ImageFormat.Bmp);
             m_bStart = true;
             this.panelCenter.Invalidate();
         }
@@ -162,16 +166,27 @@ namespace AniPang
             pMainData = KutarStat.UP;
 
             // blue stack 해상도가 w:400, h:320 일 때 기준. [4/23/2014 Mark]
-            Color crPixel = bmp.GetPixel(264, 218); 
-            Debug.WriteLine("R: " + crPixel.R + "G: " + crPixel.G + "B: " + crPixel.B);
+            //Color crPixel = bmp.GetPixel(264, 218);
+            Color crPixel1 = bmp.GetPixel(20, 10);
+            Color crPixel2 = bmp.GetPixel(25, 20);
+            Color crPixel3 = bmp.GetPixel(30, 15); 
+
+            //Debug.WriteLine("R: " + crPixel1.R + "G: " + crPixel1.G + "B: " + crPixel1.B);
 
             // 올라가서도 거품 없어질 때까지 시간이 좀 있다. [4/23/2014 Mark]
-            if ((m_iTimeNumbering - m_iTimeLastTouch) > 500)
+            if ((m_iTimeNumbering - m_iTimeLastTouch) > 450)
             {
-                if (crPixel.R == 255 && crPixel.R == 255 && crPixel.B == 255)
+                //if (crPixel.R == 255 && crPixel.G == 255 && crPixel.B == 255)
+                if (crPixel1.R > 230 && crPixel1.G > 230 && crPixel1.B > 230)
                 {
-                    lstLog.Items.Add("거품으로 판단됨!");
-                    pMainData = KutarStat.DOWN;
+                    if (crPixel2.R > 230 && crPixel2.G > 230 && crPixel2.B > 230)
+                    {
+                        if (crPixel3.R > 230 && crPixel3.G > 230 && crPixel3.B > 230)
+                        {
+                            lstLog.Items.Add("거품으로 판단됨!");
+                            pMainData = KutarStat.DOWN;
+                        }
+                    }                    
                 }
             }
             else
@@ -189,11 +204,11 @@ namespace AniPang
 
             if (m_pMainData == KutarStat.DOWN)
             {
-                SetCursorPos(m_ptStartDot.X + 100, m_ptStartDot.Y + 100);
+                SetCursorPos(m_ptStartDot.X + 200, m_ptStartDot.Y + 150);
                 mouse_event(WM_LBUTTONDOWN, 0, 0, 0, 0);
                 mouse_event(WM_LBUTTONUP, 0, 0, 0, 0);
                 m_iTimeLastTouch = m_iTimeNumbering;    // 마지막으로 터치한 시각 저장 [4/23/2014 Mark]
-                lstLog.Items.Add("터치!");
+                lstLog.Items.Add("=====터치!=====");
                 lstLog.SelectedIndex = lstLog.Items.Count - 1;
             }
             else if (m_pMainData == KutarStat.UP)
@@ -230,7 +245,8 @@ namespace AniPang
                 Font font = new Font("나눔고딕코딩", 11);
                 SolidBrush Brush_font = new SolidBrush(Color.FromArgb(255, 0, 255));
 
-                Color crPixel = bmp.GetPixel(264, 218); 
+                //Color crPixel = bmp.GetPixel(264, 218); 
+                Color crPixel = bmp.GetPixel(30, 15); 
                 String strColor = "R: " + crPixel.R.ToString() + "\nG: " + crPixel.G.ToString() + "\nB: " + crPixel.B.ToString();
                 String strStatus = m_pMainData.ToString();
 

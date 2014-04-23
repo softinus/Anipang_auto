@@ -35,6 +35,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lstLog = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_interval = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // panelCenter
@@ -90,11 +92,31 @@
             this.lstLog.Size = new System.Drawing.Size(177, 292);
             this.lstLog.TabIndex = 8;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(197, 103);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 12);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "timer";
+            // 
+            // txt_interval
+            // 
+            this.txt_interval.Location = new System.Drawing.Point(235, 99);
+            this.txt_interval.Name = "txt_interval";
+            this.txt_interval.Size = new System.Drawing.Size(35, 21);
+            this.txt_interval.TabIndex = 9;
+            this.txt_interval.Text = "95";
+            this.txt_interval.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // frmKutar1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(279, 500);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txt_interval);
             this.Controls.Add(this.lstLog);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -104,6 +126,7 @@
             this.Text = "Kutar1";
             this.Load += new System.EventHandler(this.frmKutar1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -115,5 +138,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ListBox lstLog;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txt_interval;
     }
 }

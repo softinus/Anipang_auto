@@ -20,21 +20,21 @@ namespace AniPang
         {
             frmAnipang frm1 = new frmAnipang();
             frm1.Show();
-            this.Hide();
+            //this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             frmAllGame frm2 = new frmAllGame();
             frm2.Show();
-            this.Hide();
+            //this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             frmKutar1 frm3 = new frmKutar1();
             frm3.Show();
-            this.Hide();
+            //this.Hide();
         }
     }
 }
