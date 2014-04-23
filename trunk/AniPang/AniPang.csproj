@@ -48,37 +48,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AllGame.cs">
+    <Compile Include="Forms\AllGame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AllGame.Designer.cs">
+    <Compile Include="Forms\AllGame.Designer.cs">
       <DependentUpon>AllGame.cs</DependentUpon>
     </Compile>
-    <Compile Include="Enums.cs" />
-    <Compile Include="Anipang.cs">
+    <Compile Include="Sources\Enums.cs" />
+    <Compile Include="Forms\Anipang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Anipang.Designer.cs">
+    <Compile Include="Forms\Anipang.Designer.cs">
       <DependentUpon>Anipang.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.cs">
+    <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
+    <Compile Include="Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="KeyboardHooker.cs" />
-    <Compile Include="PangData.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Sources\KeyboardHooker.cs" />
+    <Compile Include="Forms\Kutar1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Kutar1.Designer.cs">
+      <DependentUpon>Kutar1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sources\PangData.cs" />
+    <Compile Include="Sources\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AllGame.resx">
+    <EmbeddedResource Include="Forms\AllGame.resx">
       <DependentUpon>AllGame.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Anipang.resx">
+    <EmbeddedResource Include="Forms\Anipang.resx">
       <DependentUpon>Anipang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
+    <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kutar1.resx">
+      <DependentUpon>Kutar1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

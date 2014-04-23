@@ -18,14 +18,23 @@ namespace AniPang
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Anipang frm1 = new Anipang();
+            frmAnipang frm1 = new frmAnipang();
             frm1.Show();
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AllGame frm2 = new AllGame();
+            frmAllGame frm2 = new frmAllGame();
             frm2.Show();
+            this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            frmKutar1 frm3 = new frmKutar1();
+            frm3.Show();
+            this.Hide();
         }
     }
 }
