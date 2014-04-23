@@ -149,7 +149,8 @@ namespace AniPang
             Image img = Image.FromStream(ms);
             bmp = new Bitmap(img);
             ResultData(bmp, ref m_pMainData);
-            bmp.Save("Test" + m_iTimeNumbering + ".bmp", ImageFormat.Bmp);
+            //bmp.Save("Test" + m_iTimeNumbering + ".bmp", ImageFormat.Bmp);
+            bmp.Save("Test" + "000" + ".bmp", ImageFormat.Bmp);
             m_bStart = true;
             this.panelCenter.Invalidate();
         }
@@ -165,12 +166,17 @@ namespace AniPang
             Debug.WriteLine("R: " + crPixel.R + "G: " + crPixel.G + "B: " + crPixel.B);
 
             // 올라가서도 거품 없어질 때까지 시간이 좀 있다. [4/23/2014 Mark]
-            if ((m_iTimeNumbering - m_iTimeLastTouch) < 1000)
+            if ((m_iTimeNumbering - m_iTimeLastTouch) > 500)
             {
                 if (crPixel.R == 255 && crPixel.R == 255 && crPixel.B == 255)
                 {
+                    lstLog.Items.Add("거품으로 판단됨!");
                     pMainData = KutarStat.DOWN;
                 }
+            }
+            else
+            {
+                lstLog.Items.Add("대기 중..");
             }
             
         }
@@ -187,10 +193,13 @@ namespace AniPang
                 mouse_event(WM_LBUTTONDOWN, 0, 0, 0, 0);
                 mouse_event(WM_LBUTTONUP, 0, 0, 0, 0);
                 m_iTimeLastTouch = m_iTimeNumbering;    // 마지막으로 터치한 시각 저장 [4/23/2014 Mark]
+                lstLog.Items.Add("터치!");
+                lstLog.SelectedIndex = lstLog.Items.Count - 1;
             }
             else if (m_pMainData == KutarStat.UP)
             {
-
+                lstLog.Items.Add("아직 올라가 있음!");
+                lstLog.SelectedIndex = lstLog.Items.Count - 1;
             }
         }
 
