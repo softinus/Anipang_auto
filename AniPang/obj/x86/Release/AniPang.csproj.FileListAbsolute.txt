@@ -28,3 +28,13 @@ H:\0.MyProject\ani\trunk\AniPang\obj\x86\Release\AniPang.frmMain.resources
 H:\0.MyProject\ani\trunk\AniPang\obj\x86\Release\AniPang.frmKutar1.resources
 H:\0.MyProject\ani\trunk\AniPang\obj\x86\Release\AniPang.Properties.Resources.resources
 H:\0.MyProject\ani\trunk\AniPang\obj\x86\Release\AniPang.csproj.GenerateResource.Cache
+D:\0.WORKS\DAOU_work\ani\trunk\AniPang\obj\x86\Release\AniPang.exe
+D:\0.WORKS\DAOU_work\ani\trunk\AniPang\obj\x86\Release\AniPang.pdb
+D:\0.WORKS\DAOU_work\ani\trunk\AniPang\bin\Release\AniPang.exe
+D:\0.WORKS\DAOU_work\ani\trunk\AniPang\bin\Release\AniPang.pdb
+D:\0.WORKS\DAOU_work\ani\trunk\AniPang\obj\x86\Release\AniPang.frmAllGame.resources
+D:\0.WORKS\DAOU_work\ani\trunk\AniPang\obj\x86\Release\AniPang.frmAnipang.resources
+D:\0.WORKS\DAOU_work\ani\trunk\AniPang\obj\x86\Release\AniPang.frmMain.resources
+D:\0.WORKS\DAOU_work\ani\trunk\AniPang\obj\x86\Release\AniPang.frmKutar1.resources
+D:\0.WORKS\DAOU_work\ani\trunk\AniPang\obj\x86\Release\AniPang.Properties.Resources.resources
+D:\0.WORKS\DAOU_work\ani\trunk\AniPang\obj\x86\Release\AniPang.csproj.GenerateResource.Cache
