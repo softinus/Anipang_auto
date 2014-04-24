@@ -135,26 +135,27 @@ namespace AniPang
             //Size sz = new Size(400, 320);
             //Bitmap bt = new Bitmap(400, 320);
             Size sz = new Size(60, 30);
-            Bitmap bt = new Bitmap(60, 30);
+            //Bitmap bt = new Bitmap(60, 30);
+            bmp = new Bitmap(60, 30);
 
             //m_pLimit[0] = m_ptStartDot.Y; m_pLimit[1] = (m_ptStartDot.Y + 600);
             //m_pLimit[2] = m_ptStartDot.X; m_pLimit[3] = (m_ptStartDot.X + 350);
 
-            Graphics g = Graphics.FromImage(bt);
+            Graphics g = Graphics.FromImage(bmp);
 
             g.CopyFromScreen(m_ptStartDot.X+240, m_ptStartDot.Y+200, 0, 0, sz);
 
-            MemoryStream ms = new MemoryStream();
-            ms.Position = 0;
+            //MemoryStream ms = new MemoryStream();
+            //ms.Position = 0;
 
             // ms버퍼에 그림을 넣는다.
-            bt.Save(ms, ImageFormat.Jpeg);
+            //bt.Save(ms, ImageFormat.Jpeg);
 
-            Image img = Image.FromStream(ms);
-            bmp = new Bitmap(img);
+            //Image img = Image.FromStream(ms);
+            //bmp = new Bitmap(img);
             ResultData(bmp, ref m_pMainData);
-            bmp.Save("Test" + m_iTimeNumbering + ".bmp", ImageFormat.Bmp);
-            //bmp.Save("Test" + "000" + ".bmp", ImageFormat.Bmp);
+            //bmp.Save("Test" + m_iTimeNumbering + ".bmp", ImageFormat.Bmp);
+            ////bmp.Save("Test" + "000" + ".bmp", ImageFormat.Bmp);
             m_bStart = true;
             this.panelCenter.Invalidate();
         }
@@ -174,7 +175,7 @@ namespace AniPang
             //Debug.WriteLine("R: " + crPixel1.R + "G: " + crPixel1.G + "B: " + crPixel1.B);
 
             // 올라가서도 거품 없어질 때까지 시간이 좀 있다. [4/23/2014 Mark]
-            if ((m_iTimeNumbering - m_iTimeLastTouch) > 450)
+            if ((m_iTimeNumbering - m_iTimeLastTouch) > 400)
             {
                 //if (crPixel.R == 255 && crPixel.G == 255 && crPixel.B == 255)
                 if (crPixel1.R > 230 && crPixel1.G > 230 && crPixel1.B > 230)

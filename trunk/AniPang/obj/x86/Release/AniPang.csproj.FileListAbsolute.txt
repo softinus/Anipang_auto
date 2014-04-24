@@ -38,3 +38,4 @@ D:\0.WORKS\DAOU_work\ani\trunk\AniPang\obj\x86\Release\AniPang.frmMain.resources
 D:\0.WORKS\DAOU_work\ani\trunk\AniPang\obj\x86\Release\AniPang.frmKutar1.resources
 D:\0.WORKS\DAOU_work\ani\trunk\AniPang\obj\x86\Release\AniPang.Properties.Resources.resources
 D:\0.WORKS\DAOU_work\ani\trunk\AniPang\obj\x86\Release\AniPang.csproj.GenerateResource.Cache
+D:\0.WORKS\DAOU_work\ani\trunk\AniPang\obj\x86\Release\AniPang.csprojResolveAssemblyReference.cache

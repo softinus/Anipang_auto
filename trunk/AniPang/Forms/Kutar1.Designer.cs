@@ -107,7 +107,7 @@
             this.txt_interval.Name = "txt_interval";
             this.txt_interval.Size = new System.Drawing.Size(35, 21);
             this.txt_interval.TabIndex = 9;
-            this.txt_interval.Text = "95";
+            this.txt_interval.Text = "65";
             this.txt_interval.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmKutar1
