@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AniPang", "AniPang\AniPang.csproj", "{4D437A29-33BE-422C-838B-1DA89A99BC91}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileA", "AniPang\MobileA.csproj", "{4D437A29-33BE-422C-838B-1DA89A99BC91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

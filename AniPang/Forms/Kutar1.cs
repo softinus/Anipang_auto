@@ -243,15 +243,21 @@ namespace AniPang
             {
                 Graphics g = e.Graphics;
 
+                Color crPixel = bmp.GetPixel(30, 15); 
+
                 Font font = new Font("나눔고딕코딩", 11);
                 SolidBrush Brush_font = new SolidBrush(Color.FromArgb(255, 0, 255));
 
+                SolidBrush Brush_rect1 = new SolidBrush(crPixel);
+                Pen pen1= new Pen(Brush_rect1);
+
                 //Color crPixel = bmp.GetPixel(264, 218); 
-                Color crPixel = bmp.GetPixel(30, 15); 
-                String strColor = "R: " + crPixel.R.ToString() + "\nG: " + crPixel.G.ToString() + "\nB: " + crPixel.B.ToString();
+                //Color crPixel = bmp.GetPixel(30, 15); 
+                //String strColor = "R: " + crPixel.R.ToString() + "\nG: " + crPixel.G.ToString() + "\nB: " + crPixel.B.ToString();
                 String strStatus = m_pMainData.ToString();
 
-                g.DrawString(strColor, font, Brush_font, 0, 0);
+                g.DrawRectangle(pen1, new Rectangle(0, 0, 25, 25));
+                //g.DrawString(strColor, font, Brush_font, 0, 0);
                 g.DrawString(strStatus, font, Brush_font, 0, 150);
             }
         }
